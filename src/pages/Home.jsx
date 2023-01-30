@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Platform, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Platform, ScrollView } from 'react-native';
 import { Button } from "../components/Button";
 import { SkillCard } from "../components/SkillCard";
 
@@ -16,11 +16,14 @@ export function Home() {
             <Text style={styles.title}>Welcome, Yale Araújo!</Text>
             <TextInput style={styles.input} placeholderTextColor='#555' placeholder='Type your skill' onChangeText={setNewSkill} />
 
-            <Button handleAddNewSkill={handleAddNewSkill}/>
+            <Button handleAddNewSkill={handleAddNewSkill} />
             <Text style={[styles.title, { marginVertical: 50 }]}>My skills</Text>
-            {mySkills.map(skill => (
-                <SkillCard key={skill} skill={skill}/>
-            ))}
+
+            <ScrollView>
+                {mySkills.map(skill => (
+                    <SkillCard key={skill} skill={skill} />
+                ))}
+            </ScrollView>
         </View>
 
     )
