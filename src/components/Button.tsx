@@ -1,7 +1,11 @@
 import React from "react"
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
-export function Button({ handleAddNewSkill }) {
+interface ButtonProps {
+    handleAddNewSkill: () => void
+}
+
+export function Button({ handleAddNewSkill }: ButtonProps) {
 
     return (
         <TouchableOpacity style={styles.button} onPress={handleAddNewSkill}>
