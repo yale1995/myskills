@@ -16,10 +16,16 @@ export function Home() {
     function handleAddNewSkill() {
 
         const data = {
-            id: String(new Date().getHours()),
+            id: String(new Date().getTime()),
             name: newSkill
         }
         setMySkills([...mySkills, data])
+    }
+
+    function handleRemoveSkill(id: string) {
+        const skillUpdated = mySkills.filter((skill) => skill.id !== id)
+
+        setMySkills(skillUpdated)
     }
 
     let currentHour
@@ -53,7 +59,7 @@ export function Home() {
                 data={mySkills}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <SkillCard skill={item.name} />
+                    <SkillCard skill={item.name} onPress={() => handleRemoveSkill(item.id)} />
                 )}
 
             />
